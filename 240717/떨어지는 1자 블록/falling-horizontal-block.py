@@ -3,7 +3,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 k -= 1
 
-row = 0
+row = n-1
 for i in range(1, n):
     is_fill = False
     for j in range(k, k+m):
