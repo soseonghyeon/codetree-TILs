@@ -13,7 +13,10 @@ dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 # 따라서 dfs 재귀 호출 횟수 == 마을 사람 수
 def dfs(x, y):
     global grid, visited, dxs, dys, n
+
+    visited[x][y] = True
     count = 0
+
     for dx, dy in zip(dxs, dys):
         nx, ny = x+dx, y+dy
         if nx<0 or nx>=n or ny<0 or ny>=n:
@@ -22,7 +25,6 @@ def dfs(x, y):
         if visited[nx][ny] or not grid[nx][ny]:
             continue
         
-        visited[nx][ny] = True
         count += dfs(nx, ny)
 
     return 1 + count
@@ -32,7 +34,6 @@ humans = []
 for i in range(n):
     for j in range(n):
         if grid[i][j] and not visited[i][j]:
-            visited[i][j] = True
             humans.append(dfs(i, j))
 
 humans.sort()
