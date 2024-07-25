@@ -13,10 +13,10 @@ dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 q = deque()
 q.append((0, 0))
-visited[0][0] = True
 
 while q: # while len(q):
     x, y = q.popleft()
+    visited[x][y] = True
     for dx, dy in zip(dxs, dys):
         nx, ny = x+dx, y+dy
         if nx<0 or nx>=n or ny<0 or ny>=m:
@@ -26,7 +26,6 @@ while q: # while len(q):
             continue
         
         q.append((nx, ny))
-        visited[nx][ny] = True
 
 if visited[n-1][m-1]:
     print(1)
